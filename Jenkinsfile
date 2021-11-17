@@ -10,12 +10,14 @@ pipeline{
    stages{
 	stage('Checkout')
 	{
-	  checkout([
+          steps{
+	         checkout([
 			$class:'GitSCM',
 			branches:[[name:'*/master']],
 			extensions:[],
 			userRemoteConfigs:[[url:'https://github.com/saimanasg/spring-petclinic.git']]
 		])
+          }
 	}
 	stage('Build')
 	{
@@ -28,9 +30,7 @@ pipeline{
 	  steps{
 		bat 'mvn test'
 	       }
-	  post{
-		junit '/target/test-reports/*.xml'
-	       }
+	  
 	}
 	
 	stage('Sonarqube Analysis')
@@ -66,4 +66,7 @@ pipeline{
 	}
 	
    }
+        post{
+		junit '/target/test-reports/*.xml'
+	       }
 }
