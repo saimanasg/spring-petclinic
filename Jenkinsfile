@@ -68,7 +68,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-		bat 'java "-Dserver.port=8001" -jar target/*.jar'
+		bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-${mavenPom.version}.jar'
 	       }
 	}
 	
