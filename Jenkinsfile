@@ -55,7 +55,7 @@ pipeline{
 					type:'jar'
 				]
 			],
-			credentialsId:NEXUS_CREDENTIALS_ID,
+			credentialsId:NEXUS_CREDENTIAL_ID,
 			groupId:'org.springframework.samples',
 			nexusUrl:NEXUS_URL,
 			nexusVersion:NEXUS_VERSION,
