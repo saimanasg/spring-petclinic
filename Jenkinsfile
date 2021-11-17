@@ -19,12 +19,7 @@ pipeline{
 		])
           }
 	}
-	stage('Build')
-	{
-	  steps{
-		bat 'mvn compile'
-	       }
-	}
+	
 	stage('Unit Testing')
 	{
 	  steps{
