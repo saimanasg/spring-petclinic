@@ -58,7 +58,7 @@ pipeline{
 			groupId:'org.springframework.samples',
 			nexusUrl:NEXUS_URL,
 			nexusVersion:NEXUS_VERSION,
-			protocol:NEXUS_PROTOCOL',
+			protocol:NEXUS_PROTOCOL,
 			repository:NEXUS_REPOSITORY,
 			version:"${mavenPom.version}"
 			}
