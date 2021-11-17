@@ -39,7 +39,7 @@ pipeline{
 	  steps{
 		bat script: '''mvn sonar:sonar \
 		-Dsonar.host.url=http://localhost:9000 \
-		-Dsonar.login= 9483545c1871b04dc0162f7b5726b475b1153f3e'''
+		-Dsonar.login=9483545c1871b04dc0162f7b5726b475b1153f3e'''
 	       }
 	}
 	stage('Uploading Nexus Artifact')
