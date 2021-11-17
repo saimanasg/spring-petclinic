@@ -27,13 +27,7 @@ pipeline{
 	       }
 	  
 	}
-	stage('Test report')
-	{
-	  steps{
-		junit '/target/test-reports/*.xml'
-	       }
-	  
-	}
+	
 	stage('Sonarqube Analysis')
 	{
 	  steps{
