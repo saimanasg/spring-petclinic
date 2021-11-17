@@ -69,8 +69,8 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                 def mavenPom=readMavenPom file:'pom.xml'
-		bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-${mavenPom.version}.jar'
+                
+		bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar'
 	       }
 	}
 	
