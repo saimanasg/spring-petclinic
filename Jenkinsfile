@@ -65,6 +65,12 @@ pipeline{
 			}
 	       }
 	}
+        stage('Deploy')
+	{
+	  steps{
+		bat 'java "-Dserver.port=8001" -jar target/*.jar'
+	       }
+	}
 	
    }
         post{
