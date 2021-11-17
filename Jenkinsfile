@@ -6,7 +6,7 @@ pipeline{
 	NEXUS_URL="localhost:8081"
 	NEXUS_REPOSITORY="sample-repo"
 	NEXUS_CREDENTIAL_ID="Nexus_ID"
-        def mavenPom=readMavenPom file:'pom.xml'
+        
        }
    stages{
 	stage('Checkout')
@@ -47,7 +47,7 @@ pipeline{
 	{
 	  steps{
 		script{
-			
+			def mavenPom=readMavenPom file:'pom.xml'
 			nexusArtifactUploader artifacts:[
 				[
 					artifactId: 'spring-petclinic',
@@ -69,6 +69,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
+                 def mavenPom=readMavenPom file:'pom.xml'
 		bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-${mavenPom.version}.jar'
 	       }
 	}
