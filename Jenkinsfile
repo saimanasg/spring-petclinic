@@ -4,7 +4,7 @@ pipeline{
 	NEXUS_VERSION="nexus3"
 	NEXUS_PROTOCOL="http"
 	NEXUS_URL="localhost:8081"
-	NEXUS_REPOSIORY="repo_name"
+	NEXUS_REPOSIORY="sample-repo"
 	NEXUS_CREDENTIAL_ID="Nexus_ID"
        }
    stages{
@@ -14,7 +14,7 @@ pipeline{
 			$class:'GitSCM',
 			branches:[[name:'*/master']],
 			extensions:[],
-			userRemoteConfigs:[[credentialsId:'github_id',url:'https://github.com/sample/sample.git']]
+			userRemoteConfigs:[[url:'https://github.com/saimanasg/spring-petclinic.git']]
 		])
 	}
 	stage('Build')
@@ -38,7 +38,7 @@ pipeline{
 	  steps{
 		bat script: '''mvn sonar:sonar \
 		-Dsonar.host.url=http://localhost:9000 \
-		-Dsonar.login= Sonarqube_Token'''
+		-Dsonar.login= 9483545c1871b04dc0162f7b5726b475b1153f3e'''
 	       }
 	}
 	stage('Uploading Nexus Artifact')
@@ -48,14 +48,14 @@ pipeline{
 			def mavenPom=readMavenPom file:'pom.xml'
 			nexusArtifactUploader artifacts:[
 				[
-					artifactId: 'Sample-Java-Project',
+					artifactId: 'spring-petclinic',
 					classifier:'',
-					file:"target/Sample-Java-Project-${mavenPom.version}.jar",
+					file:"target/spring-petclinic-${mavenPom.version}.jar",
 					type:'jar'
 				]
 			],
 			credentialsId:NEXUS_CREDENTIALS_ID,
-			groupId:'com.cg.trg',
+			groupId:'org.springframework.samples',
 			nexusUrl:NEXUS_URL,
 			nexusVersion:NEXUS_VERSION,
 			protocol:NEXUS_PROTOCOL',
