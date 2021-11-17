@@ -22,7 +22,7 @@ pipeline{
 	stage('Build')
 	{
 	  steps{
-		bat 'mvn build'
+		bat 'mvn compile'
 	       }
 	}
 	stage('Unit Testing')
