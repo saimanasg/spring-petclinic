@@ -69,7 +69,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.war'
+               deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.118.133.224:8080')], contextPath: '/sample', war: '**/*.war'
                     
 	       }
 	}
