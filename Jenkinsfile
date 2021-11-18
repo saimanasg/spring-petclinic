@@ -69,8 +69,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                
-		scp -i Amzn-linux-Key.pem ec2-user@18.189.14.87 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar'
+                ssh -i Amzn-linux-Key.pem ec2-user@18.189.14.87 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar'
 	       }
 	}
 	
