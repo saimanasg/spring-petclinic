@@ -69,9 +69,8 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                bat '''
-                        scp -i pipe_line.ppk ec2-user@18.118.133.224 'java  -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar
-                    '''
+                bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar'
+                    
 	       }
 	}
 	
