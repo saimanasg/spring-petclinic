@@ -70,7 +70,7 @@ pipeline{
 	{
 	  steps{
                 bat '''
-                        scp -i Amzn-linux-Key.pem ec2-user@18.189.14.87 'java  -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar
+                        scp -i pipe_line.ppk ec2-user@18.118.133.224 'java  -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar
                     '''
 	       }
 	}
