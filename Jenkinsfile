@@ -69,7 +69,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                bat 'java "-Dserver.port=8001" -war target/spring-petclinic-2.5.0-SNAPSHOT.war'
+                bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.war'
                     
 	       }
 	}
