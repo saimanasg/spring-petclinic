@@ -20,13 +20,7 @@ pipeline{
 		])
           }
 	}
-	stage('build')
-	{
-	  steps{
-		bat 'mvn clean install'
-	       }
-	  
-	}
+	
 	stage('Unit Testing')
 	{
 	  steps{
