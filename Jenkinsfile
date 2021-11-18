@@ -20,7 +20,13 @@ pipeline{
 		])
           }
 	}
-	
+	stage('Build')
+	{
+	  steps{
+		bat 'mvn clean package'
+	       }
+	  
+	}
 	stage('Unit Testing')
 	{
 	  steps{
