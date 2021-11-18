@@ -52,8 +52,8 @@ pipeline{
 				[
 					artifactId: 'spring-petclinic',
 					classifier:'',
-					file:"target/spring-petclinic-${mavenPom.version}.jar",
-					type:'jar'
+					file:"target/spring-petclinic-${mavenPom.version}.war",
+					type:'war'
 				]
 			],
 			credentialsId:NEXUS_CREDENTIAL_ID,
@@ -69,7 +69,7 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-                bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.jar'
+                bat 'java "-Dserver.port=8001" -jar target/spring-petclinic-2.5.0-SNAPSHOT.war'
                     
 	       }
 	}
