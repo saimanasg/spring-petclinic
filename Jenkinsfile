@@ -69,8 +69,10 @@ pipeline{
         stage('Deploy')
 	{
 	  steps{
-               deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.191.89.200:8080/')], contextPath: 'test', war: '**/*.war'
-                    
+               //deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.191.89.200:8080/')], contextPath: 'test', war: '**/*.war'
+                bat '''
+                   ssh -i mrng.pem ec2-user@18.191.89.200 'java  -jar target/spring-petclinic-2.5.0-SNAPSHOT.war'
+                    '''    
 	       }
 	}
 	
