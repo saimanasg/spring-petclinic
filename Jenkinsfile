@@ -52,7 +52,7 @@ pipeline{
 				[
 					artifactId: '${mavenPom.artifactId}',
 					classifier:'',
-					file:"target/${mavenPom.artifactId}-${mavenPom.version}.war",
+					file:"target/spring-petclinic-${mavenPom.version}.war",
 					type:'war'
 				]
 			],
