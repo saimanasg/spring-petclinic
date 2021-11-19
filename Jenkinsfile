@@ -50,14 +50,14 @@ pipeline{
 			def mavenPom=readMavenPom file:'pom.xml'
 			nexusArtifactUploader artifacts:[
 				[
-					artifactId: '${mavenPom.artifactId}',
+					artifactId: "${mavenPom.artifactId}",
 					classifier:'',
 					file:"target/spring-petclinic-${mavenPom.version}.war",
 					type:'war'
 				]
 			],
 			credentialsId:NEXUS_CREDENTIAL_ID,
-			groupId:'${mavenPom.groupId}',
+			groupId:"${mavenPom.groupId}",
 			nexusUrl:NEXUS_URL,
 			nexusVersion:NEXUS_VERSION,
 			protocol:NEXUS_PROTOCOL,
