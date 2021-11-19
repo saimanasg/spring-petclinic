@@ -52,7 +52,7 @@ pipeline{
 				[
 					artifactId: '${mavenPom.artifactId}',
 					classifier:'',
-					file:"target/*.war",
+					file:"target/${mavenPom.artifactId}-${mavenPom.version}.war",
 					type:'war'
 				]
 			],
