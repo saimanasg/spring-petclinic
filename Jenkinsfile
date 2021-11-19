@@ -52,8 +52,8 @@ pipeline{
 				[
 					artifactId: "${mavenPom.artifactId}",
 					classifier:'',
-					file:"target/spring-petclinic-${mavenPom.version}.war",
-					type:'war'
+					file:"target/spring-petclinic-${mavenPom.version}.jar",
+					type:'jar'
 				]
 			],
 			credentialsId:NEXUS_CREDENTIAL_ID,
