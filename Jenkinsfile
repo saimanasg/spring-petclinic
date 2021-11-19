@@ -70,9 +70,7 @@ pipeline{
 	{
 	  steps{
                //deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.219.186.29:8080/')], contextPath: 'note', war: '**/*.war'
-                bat '''
-                   scp -i mrng.pem ec2-user@18.191.89.200 target/spring-petclinic-2.5.0-SNAPSHOT.jar ec2-user@18.191.89.200:/home/ec2-user
-                    '''    
+                bat 'scp -i "D:\STUDY\AWS\KeyPairs\mrng.pem" ec2-user@18.191.89.200 target/spring-petclinic-2.5.0-SNAPSHOT.jar ec2-user@18.191.89.200:/home/ec2-user'    
 	       }
 	}
 	
