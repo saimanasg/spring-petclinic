@@ -61,7 +61,7 @@ pipeline{
 			nexusUrl:NEXUS_URL,
 			nexusVersion:NEXUS_VERSION,
 			protocol:NEXUS_PROTOCOL,
-			repository:NEXUS_REPOSITORY,
+			repository:NEXUS_REPOSITORY
 			//version:"${mavenPom.version}"
 			}
 	       }
