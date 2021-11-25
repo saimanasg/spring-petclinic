@@ -52,7 +52,7 @@ pipeline{
 				[
 					//artifactId: "${mavenPom.artifactId}",
 					classifier:'',
-					file:"target/spring-petclinic-${mavenPom.version}.jar",
+					file:"target/*.jar",
 					type:'jar'
 				]
 			],
