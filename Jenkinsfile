@@ -27,13 +27,13 @@ pipeline{
 	       }
 	  
 	}
-// 	stage('Unit Testing')
-// 	{
-// 	  steps{
-// 		bat 'mvn test'
-// 	       }
+	stage('Unit Testing')
+	{
+	  steps{
+		bat 'mvn test'
+	       }
 	  
-// 	}
+	}
 	
 // 	stage('Sonarqube Analysis')
 // 	{
@@ -43,29 +43,29 @@ pipeline{
 // 		-Dsonar.login=9483545c1871b04dc0162f7b5726b475b1153f3e'''
 // 	       }
 // 	}
-	stage('Uploading Nexus Artifact')
-	{
-	  steps{
-		script{
-			def mavenPom=readMavenPom file:'pom.xml'
-			nexusArtifactUploader artifacts:[
-				[
-					artifactId: "A",
-					classifier:'',
-                                        file:"target/spring-petclinic-${mavenPom.version}.jar",
-					type:'jar'
-				]
-			],
-			credentialsId:NEXUS_CREDENTIAL_ID,
-			groupId:"B",
-			nexusUrl:NEXUS_URL,
-			nexusVersion:NEXUS_VERSION,
-			protocol:NEXUS_PROTOCOL,
-			repository:NEXUS_REPOSITORY
-			version:"2.2.2"
-			}
-	       }
-	}
+// 	stage('Uploading Nexus Artifact')
+// 	{
+// 	  steps{
+// 		script{
+// 			def mavenPom=readMavenPom file:'pom.xml'
+// 			nexusArtifactUploader artifacts:[
+// 				[
+// 					artifactId: "A",
+// 					classifier:'',
+//                                         file:"target/spring-petclinic-${mavenPom.version}.jar",
+// 					type:'jar'
+// 				]
+// 			],
+// 			credentialsId:NEXUS_CREDENTIAL_ID,
+// 			groupId:"B",
+// 			nexusUrl:NEXUS_URL,
+// 			nexusVersion:NEXUS_VERSION,
+// 			protocol:NEXUS_PROTOCOL,
+// 			repository:NEXUS_REPOSITORY
+// 			version:"2.2.2"
+// 			}
+// 	       }
+// 	}
 //         stage('Deploy')
 // 	{
 // 	  steps{
