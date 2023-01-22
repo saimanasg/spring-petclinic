@@ -4,6 +4,7 @@ pipeline {
 //         	image 'maven:3.5.0'
 //         }
 //       }
+  agent any
   stages {
 //   	stage('Maven Install') {
     	
