@@ -5,7 +5,7 @@ pipeline {
   	stage('Maven Install') {
     	agent {
       	docker {
-        	image 'maven:3.5.0'
+        	image 'maven:3.6.3-jdk-8'
         }
       }
       steps {
@@ -21,11 +21,11 @@ pipeline {
        stage('Docker Check') {
       agent {
       	docker {
-        	image 'openpolicyagent/conftest'
+        	image 'openpolicyagent/conftest:latest'
         }
       }
       steps {
-      	sh 'conftest test Dockerfile'
+      	sh 'conftest test --policy dockerfile-security.rego  Dockerfile'
       }
     }
           
