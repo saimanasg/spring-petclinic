@@ -50,7 +50,7 @@ pipeline {
 //                     withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
 //         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push saimanas123/spring-petclinic:latest'
-        }
+        
             }
       
     }      
