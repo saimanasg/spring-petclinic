@@ -71,8 +71,9 @@ pipeline {
     
   }
        post{
-               agent any
+               
                 always{
+                        agent any
                         junit '/target/surefire-reports/*.xml'
                 }
         }
