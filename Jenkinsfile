@@ -18,13 +18,21 @@ pipeline {
 //       	sh 'mvn clean test'
 //       }
 //     }
+//           stage('Conftest') {
+//     steps {
+//         script {
+//             docker.image("openpolicyagent/conftest").inside("--entrypoint=") {
+//                 sh "conftest test --policy dockerfile-security.rego  Dockerfile"
+//             }
+//         }
+//     }
+// }
           stage('Conftest') {
     steps {
-        script {
-            docker.image("openpolicyagent/conftest").inside("--entrypoint=") {
+
                 sh "conftest test --policy dockerfile-security.rego  Dockerfile"
             }
-        }
+       
     }
 }
 //        stage('Docker Check') {
