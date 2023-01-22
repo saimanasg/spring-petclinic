@@ -1,6 +1,6 @@
 pipeline {
 	
- agent none
+ agent any
   stages {
   	stage('Maven Install') {
     	agent {
@@ -73,7 +73,7 @@ pipeline {
        post{
                
                 always{
-                        agent any
+                        
                         junit '/target/surefire-reports/*.xml'
                 }
         }
