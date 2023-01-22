@@ -34,7 +34,7 @@ pipeline {
             }
        
     }
-}
+
 //        stage('Docker Check') {
 //       agent {
 //       	docker {
