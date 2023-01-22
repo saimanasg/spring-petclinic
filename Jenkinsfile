@@ -12,12 +12,12 @@ pipeline {
       	sh 'mvn clean install'
       }
     }
-//     stage('Maven test') {
+    stage('Maven test') {
     	
-//       steps {
-//       	sh 'mvn clean test'
-//       }
-//     }
+      steps {
+      	sh 'mvn clean test'
+      }
+    }
 //           stage('Conftest') {
 //     steps {
 //         script {
@@ -44,6 +44,14 @@ pipeline {
       	sh 'docker build -t saimanas123/spring-petclinic:latest .'
       }
     }
+          
+          
+//      stage('Trivy Scan'){
+//      agent any
+//              steps{
+                       
+//              }     
+//      }
     stage('Docker Push') {
       agent any
             steps{
@@ -55,6 +63,12 @@ pipeline {
             }
       
     }      
+          
     
   }
+       post{
+                always{
+                        junit '/target/surefire-reports/*.xml'
+                }
+        }
 }
