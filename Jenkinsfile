@@ -102,8 +102,7 @@ pipeline {
            
             steps{
 
-          sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo
-'
+          sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo'
           sh 'docker tag saimanas123/spring-petclinic 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo/docker-images/spring-petclinic-${BUILD_NUMBER}'
           sh 'docker push 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo/docker-images/spring-petclinic-${BUILD_NUMBER}'
         
