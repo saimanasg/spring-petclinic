@@ -89,9 +89,9 @@ pipeline {
       agent any
            
             steps{
-
+         sh 'docker tag saimanas123/spring-petclinic nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic-${BUILD_NUMBER}'
           sh 'docker login -u admin -p admin nexus-1416675214.us-east-1.elb.amazonaws.com:9090'
-          sh 'docker tag saimanas123/spring-petclinic nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic'
+         
           sh 'docker push nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic-${BUILD_NUMBER}'
         
             }
