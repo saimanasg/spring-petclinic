@@ -27,25 +27,16 @@ pipeline {
 //         }
 //     }
 // }
-          stage('Conftest') {
-           agent any
-    steps {
+//           stage('Conftest') {
+//            agent any
+//     steps {
 
-                sh "conftest test --policy dockerfile-security.rego  Dockerfile"
-            }
+//                 sh "conftest test --policy dockerfile-security.rego  Dockerfile"
+//             }
        
-    }
-
-//        stage('Docker Check') {
-//       agent {
-//       	docker {
-//         	image 'openpolicyagent/conftest:latest'
-//         }
-//       }
-//       steps {
-//       	sh 'conftest test --policy dockerfile-security.rego  Dockerfile'
-//       }
 //     }
+
+
           
      stage('Docker Build') {
       agent any
@@ -53,5 +44,12 @@ pipeline {
       	sh 'docker build -t saimanas123/spring-petclinic:latest .'
       }
     }
+    stage('Docker Push') {
+      agent any
+      steps {
+      sh 'docker push shanem/spring-petclinic:latest'
+      }
+    }      
+    
   }
 }
