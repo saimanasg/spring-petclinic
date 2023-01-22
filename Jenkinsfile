@@ -1,6 +1,7 @@
 pipeline {
 	
  agent any
+        
   stages {
   	stage('Maven Install') {
     	agent {
@@ -56,17 +57,59 @@ pipeline {
                        
 //              }     
 //      }
-    stage('Docker Push') {
+    stage('DockerHub Push') {
       agent any
+           
             steps{
-//                     withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
-//         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+
           sh 'docker login -u saimanas123 -p dckr_pat_BfJGlavANkyEf4x3lApm-pqbMx0'
-          sh 'docker push saimanas123/spring-petclinic:latest'
+          sh 'docker push saimanas123/spring-petclinic:spring-latest'
         
             }
       
     }      
+          
+          
+//      stage('Docker Build') {
+//       agent any
+//       steps {
+//       	sh 'docker build -t saimanas123/spring-petclinic:latest .'
+//         sh 'docker tag saimanas123/spring-petclinic nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic'
+//       }
+//     }
+          
+          
+//      stage('Trivy Scan'){
+//      agent any
+//              steps{
+                       
+//              }     
+//      }
+    stage('Nexus Push') {
+      agent any
+           
+            steps{
+
+          sh 'docker login -u admin -p admin nexus-1416675214.us-east-1.elb.amazonaws.com:9090'
+          sh 'docker tag saimanas123/spring-petclinic nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic'
+          sh 'docker push nexus-1416675214.us-east-1.elb.amazonaws.com:9090/docker-images/spring-petclinic-${BUILD_NUMBER}'
+        
+            }
+      
+    }      
+    stage('ECR Push') {
+      agent any
+           
+            steps{
+
+          sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo
+'
+          sh 'docker tag saimanas123/spring-petclinic 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo/docker-images/spring-petclinic-${BUILD_NUMBER}
+          sh 'docker push 126986921526.dkr.ecr.us-east-1.amazonaws.com/testrepo/docker-images/spring-petclinic-${BUILD_NUMBER}'
+        
+            }
+      
+    }     
           
     
   }
