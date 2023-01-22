@@ -47,7 +47,7 @@ pipeline {
     stage('Docker Push') {
       agent any
       steps {
-      sh 'docker push shanem/spring-petclinic:latest'
+      sh 'docker push saimanas123/spring-petclinic:latest'
       }
     }      
     
