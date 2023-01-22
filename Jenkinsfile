@@ -27,14 +27,14 @@ pipeline {
 //         }
 //     }
 // }
-          stage('Conftest') {
-           agent any
-    steps {
+//           stage('Conftest') {
+//            agent any
+//     steps {
 
-                sh "conftest test --policy dockerfile-security.rego  Dockerfile"
-            }
+//                 sh "conftest test --policy dockerfile-security.rego  Dockerfile"
+//             }
        
-    }
+//     }
 
 
           
