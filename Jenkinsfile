@@ -18,6 +18,17 @@ pipeline {
 //       	sh 'mvn clean test'
 //       }
 //     }
+       stage('Docker Check') {
+      agent {
+      	docker {
+        	image 'openpolicyagent/conftest'
+        }
+      }
+      steps {
+      	sh 'conftest test Dockerfile'
+      }
+    }
+          
      stage('Docker Build') {
       agent any
       steps {
