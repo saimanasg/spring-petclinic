@@ -1,17 +1,17 @@
 pipeline {
-// 	agent {
-//       	docker {
-//         	image 'maven:3.5.0'
-//         }
-//       }
-  agent any
+	agent {
+      	docker {
+        	image 'maven:3.5.0'
+        }
+      }
+ // agent any
   stages {
-//   	stage('Maven Install') {
+  	stage('Maven Install') {
     	
-//       steps {
-//       	sh 'mvn clean install'
-//       }
-//     }
+      steps {
+      	sh 'mvn clean install'
+      }
+    }
 //     stage('Maven test') {
     	
 //       steps {
