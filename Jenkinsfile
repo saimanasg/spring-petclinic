@@ -19,7 +19,7 @@ pipeline {
 //       }
 //     }
      stage('Docker Build') {
-      agent none
+      agent any
       steps {
       	sh 'docker build -t saimanas123/spring-petclinic:latest .'
       }
